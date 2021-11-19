@@ -1,0 +1,74 @@
+<div class="container">
+    <mat-toolbar> 
+        <span>Facturas</span>
+        <div class="example-spacer"></div>
+            <button mat-raised-button color="primary" routerLink="/home/crear-facturas">Añadir Factura</button>
+        
+
+    </mat-toolbar>
+
+    <mat-form-field appearance="standard">
+        <mat-label>Filter</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+    </mat-form-field>
+    <div *ngIf="facturasData.length > 0">
+        <div class="mat-elevation-z8">
+            <table mat-table [dataSource]="dataSource" matSort>
+
+
+                <ng-container matColumnDef="numero">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Nº de Factura</th>
+                    <td mat-cell *matCellDef="let element"> {{element.numero}} </td>
+                </ng-container>
+
+
+                <ng-container matColumnDef="date">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Fecha </th>
+                    <td mat-cell *matCellDef="let element"> {{element.date | date: 'dd/MM/yyyy'}} </td>
+                </ng-container>
+
+
+                <ng-container matColumnDef="name">
+                    <th mat-header-cell *matHeaderCellDef>Nombre Cliente </th>
+                    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                </ng-container>
+
+
+                <ng-container matColumnDef="direct">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> direccion de envio </th>
+                    <td mat-cell *matCellDef="let element"> {{element.direct}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="import">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Importe del pedido </th>
+                    <td mat-cell *matCellDef="let element"> {{element.import}} € </td>
+                </ng-container>
+
+                <ng-container matColumnDef="acciones">
+                    <th mat-header-cell *matHeaderCellDef></th>
+                    <td mat-cell *matCellDef="let element; let i =index" style="text-align: right;">
+                        <a class="pointer" (click)="generarPdf(i)" style="color: rgb(123, 123, 245);" matTooltip="PDF">
+                            <mat-icon>search</mat-icon>
+                        </a>
+                        <a class="pointer" style="color: rgb(2, 19, 49);" matTooltip="Editar">
+                            <mat-icon>edit</mat-icon>
+                        </a>
+                        <a class="pointer" (click)="eliminarFactura(i)" style="color: rgb(250, 1, 1);"
+                            matTooltip="Eliminar">
+                            <mat-icon>delete</mat-icon>
+                        </a>
+                    </td>
+
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+            <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons
+                aria-label="Select page of periodic elements">
+            </mat-paginator>
+        </div>
+    </div>
+    <h2 *ngIf="facturasData.length == 0">No hay Facturas disponibles</h2>
+
+</div>

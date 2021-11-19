@@ -1,0 +1,12 @@
+[
+    {
+        "nombre":"Home",
+        "redirect":"/home"
+    },{
+        "nombre":"Balance",
+        "redirect":"/home/balance"
+    },{
+        "nombre":"Clientes",
+        "redirect":"/home/clientes"
+    }
+]

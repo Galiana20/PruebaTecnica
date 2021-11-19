@@ -1,0 +1,19 @@
+.body{
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    align-items: center;
+    background-color:#CAD5F8;
+}
+
+.login{
+    width: 100%;
+    max-width: 350px;
+    text-align: center;
+}
+.ancho{
+    width: 100%;
+}
+.buton{
+    height: 50px;
+}

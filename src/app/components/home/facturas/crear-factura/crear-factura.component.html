@@ -1,0 +1,57 @@
+<div class="container">
+    <mat-toolbar>
+        <span>Añadir Facturas</span>
+    </mat-toolbar>
+    <mat-card style="margin-top: 20px;">
+        <form [formGroup]="form" (ngSubmit)="addFactura()">
+            <mat-grid-list cols="4" rowHeight="70px">
+
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                    <mat-form-field class="ancho" appearance="fill">
+                        <input matInput placeholder="Numero de factura" autocomplete="off" formControlName="numero">
+                    </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile [colspan]="3" [rowspan]="6">
+                    <img src="./assets/img/documentos.png" width="300px" height="300px">
+                </mat-grid-tile>
+
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                    <mat-form-field class="ancho" appearance="fill">
+                        <input matInput placeholder="aaaa/mm/dd" autocomplete="off" formControlName="date">
+                    </mat-form-field>
+                </mat-grid-tile>
+                    <mat-grid-tile [colspan]="1" [rowspan]="1">
+                        <mat-form-field class="ancho">
+                            <mat-label>Cliente</mat-label>
+                            <mat-select formControlName="name">
+                                <mat-option *ngFor="let name of nameClientes" [value]="name.value" (click)="direccionAction(name.direccion)">
+                                    {{name.value}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </mat-grid-tile>
+
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                    <mat-form-field class="ancho" appearance="fill">
+                        <input matInput placeholder="Direccion" value="{{direccion}}"disabled >
+                    </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                    <mat-form-field class="ancho" appearance="fill">
+                        <input matInput placeholder="Importe" autocomplete="off" formControlName="import">
+                    </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                    <button mat-raised-button routerLink="/home" class="anchoBoton">Volver</button>
+                    <button type="submit" [disabled]="form.invalid" mat-raised-button class="anchoBoton" color="primary">Añadir factura </button>
+                </mat-grid-tile>
+
+            </mat-grid-list>
+            <br>
+            <br>
+        </form>
+    </mat-card>
+</div>

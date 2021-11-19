@@ -1,0 +1,40 @@
+<div class="container">
+    <mat-toolbar>
+        <span>Añadir Clientes</span>
+    </mat-toolbar>
+    <mat-card style="margin-top: 20px;">
+        <form [formGroup]="form" (ngSubmit)="addUser()">
+            <mat-grid-list cols="4" rowHeight="70px">
+
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                    <mat-form-field class="ancho" appearance="fill">
+                        <input matInput placeholder="Nombre" autocomplete="off" formControlName="name">
+                    </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile [colspan]="3" [rowspan]="4">
+                    <img src="./assets/img/user.png" width="280px" height="280px">
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                    <mat-form-field class="ancho" appearance="fill">
+                        <input matInput placeholder="direccion" autocomplete="off"formControlName="direccion">
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                    <mat-form-field class="ancho" appearance="fill">
+                        <input matInput placeholder="correo" autocomplete="off"formControlName="email">
+                    </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                    <button mat-raised-button routerLink="/home/clientes" class="anchoBoton">Volver</button>
+                    <button type="submit" [disabled]="form.invalid" mat-raised-button class="anchoBoton" color="primary">Añadir cliente </button>
+                </mat-grid-tile>
+
+            </mat-grid-list>
+            <br>
+            <br>
+        </form>
+    </mat-card>
+</div>
+ 
